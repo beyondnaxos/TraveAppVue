@@ -1,34 +1,32 @@
 <template>
-    <section class="destination">
-        <h1>{{ destination.name }}</h1>
+    <section class="destination" v-if="data">
+        <h1>{{ data.name }}</h1>
         <div class="destination-details">
-            <img :src="`/images/${destination.image}`" :alt="destination.name">
-            <p>{{ destination.description }}</p>    
+            <img :src="`/images/${data.image}`" :alt="data.name">
+            <p>{{ data.description }}</p>
         </div>
-
     </section>
 </template>
 
 <script setup>
-
-import { computed } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
-import sourceData from '@/data.json'
 
 const route = useRoute()
+const data = ref(null)
 
-const destinationId = computed(() => parseInt(route.params.id))
+const fetchDestinationData = async () => {
+    try { 
+        const response = await fetch(`https://travel-dummy-api.netlify.app/${route.params.slug}`)
+        data.value = await response.json()    
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-const destination = computed(() => {
-    return sourceData.destinations.find(
-        destination => destination.id === destinationId.value
-    )
-
+watchEffect(() => {
+    fetchDestinationData()
 })
-
 </script>
 
-<style lang="scss" scoped>
-
-
-</style>    
+<style lang="scss" scoped></style>   
