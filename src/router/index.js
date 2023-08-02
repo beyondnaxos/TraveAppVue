@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory}  from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
@@ -7,21 +7,19 @@ import Hawaii from '@/views/Hawaii.vue'
 import Jamaica from '@/views/Jamaica.vue'
 import Panama from '@/views/Panama.vue'
 
-
 const routes = [
-    { path : '/', name: 'Home', component: Home},
-    { path : '/about', name: 'About', component: About},
-    { path : '/brazil', name: 'brazil', component: Brazil},
-    { path : '/hawaii', name: 'hawaii', component: Hawaii},
-    { path : '/jamaica', name: 'jamaica', component: Jamaica},
-    { path : '/panama', name: 'panama', component: Panama},
-     {path : '/destination/:id', component: () => import('@/views/DestinationShow.vue')}
-
+  { path: '/', name: 'Home', component: Home },
+  { path: '/about', name: 'About', component: About },
+  { path: '/brazil', name: 'brazil', component: Brazil },
+  { path: '/hawaii', name: 'hawaii', component: Hawaii },
+  { path: '/jamaica', name: 'jamaica', component: Jamaica },
+  { path: '/panama', name: 'panama', component: Panama },
+  { path: '/destination/:id', name: 'destination.show' ,  component: () => import('@/views/DestinationShow.vue') }
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes
+  history: createWebHistory(),
+  routes
 })
 
 export default router

@@ -6,7 +6,7 @@
             <router-link 
             v-for="dest in destinations" 
             :key="dest.id" 
-            :to="dest.slug"
+            :to="{name :'destination.show', params: {id : dest.id}}"
             >
                 <h2>{{ dest.name }}</h2>
                 <img 
