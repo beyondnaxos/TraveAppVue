@@ -1,10 +1,3 @@
-<script setup>
-import TheNavigation from '@/components/TheNavigation.vue'
-
-</script>
-
-
-
 <template>
   
   <TheNavigation /> 
@@ -15,6 +8,14 @@ import TheNavigation from '@/components/TheNavigation.vue'
   </div>
 
 </template>
+
+
+<script setup>
+import TheNavigation from '@/components/TheNavigation.vue'
+</script>
+
+
+
 
 <style scoped>
 
